@@ -16,8 +16,8 @@ class Tests(unittest.TestCase):
 def is_valid_password(s):
     #Two adjacent digits are the same (like 22 in 122345).
     #the two adjacent matching digits are not part of a larger group of matching digits.
-    even_repeated_digits = list(len(m.group()) for m in re.finditer(r'(\d)\1{1,}', s))
-    if 2 not in even_repeated_digits:
+    repeated_digit_counts = list(len(m.group()) for m in re.finditer(r'(\d)\1{1,}', s))
+    if 2 not in repeated_digit_counts:
         return False
 
     #Going from left to right, the digits never decrease
